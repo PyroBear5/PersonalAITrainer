@@ -23,9 +23,9 @@ Mediapipe ist eine Open-Source-Bibliothek von Google, die Werkzeuge für die Imp
 
 Mediapipe wird in diesem Projekt verwendet um ein Skelett des Menschen vor der Kamera zu bekommen. Aus diesem Skelett kann man dann die nötigen Punkte entnehmen, welche für die Berechnung wichtig sind. (Siehe Abbildunggen)
 
-![[pictures/Image1.png]]
-![[pictures/Image2.png]]
+![Body](pictures/Image1.png)
 
+![Points](pictures/Image2.png)
 # Code  
 
 
