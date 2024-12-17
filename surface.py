@@ -72,15 +72,21 @@ def detect_squat(landmarks, image):
                 prev_squat_position = position
 
         # Text auf das Bild schreiben
-        cv2.putText(image, f'Squat Position: {position}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(image, f'Knee Angle: {int(angle_knee)}', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(image, f'Torso Angle: {int(angle_torso)}', (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(image, f'Squats: {squat_counter}', (50, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA) # Display squat counter
+        cv2.putText(image, f'Squat Position: {position}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
+        cv2.putText(image, f'Squat Position: {position}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+
+        #cv2.putText(image, f'Knee Angle: {int(angle_knee)}', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        #cv2.putText(image, f'Torso Angle: {int(angle_torso)}', (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(image, f'Squats: {squat_counter}', (50, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA) 
+        cv2.putText(image, f'Squats: {squat_counter}', (50, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA) 
+        
 
 
 
     else:
+        cv2.putText(image, 'Body not fully visible!', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
         cv2.putText(image, 'Body not fully visible!', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 250, 0), 2, cv2.LINE_AA)
+        
 
 
 def detect_pushup(landmarks, image):
@@ -135,12 +141,16 @@ def detect_pushup(landmarks, image):
             prev_position = None  # Sequenz zurücksetzen, wenn nicht aligned
 
         # Text auf das Bild schreiben
-        cv2.putText(image, f'Push-up Position: {position}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(image, f'Angle: {int(angle)}', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(image, f'Alignment: {alignment}', (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(image, f'Shoulder-Hip-Ankle Angle: {int(angle_shoulder_hip_ankle)}', (50, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
-        cv2.putText(image, f'Push-ups: {pushup_counter}', (50, 250), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+        cv2.putText(image, f'Push-up Position: {position}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
+        cv2.putText(image, f'Push-up Position: {position}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2, cv2.LINE_AA)
+        #cv2.putText(image, f'Angle: {int(angle)}', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(image, f'Alignment: {alignment}', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
+        cv2.putText(image, f'Alignment: {alignment}', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
+        #cv2.putText(image, f'Shoulder-Hip-Ankle Angle: {int(angle_shoulder_hip_ankle)}', (50, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+        cv2.putText(image, f'Push-ups: {pushup_counter}', (50, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
+        cv2.putText(image, f'Push-ups: {pushup_counter}', (50, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
     else:
+        cv2.putText(image, f'Body not fully visible!', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
         cv2.putText(image, f'Body not fully visible!', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 250, 0), 2, cv2.LINE_AA)
 
 
@@ -179,17 +189,30 @@ def detect_plank(landmarks, image):
             stable_duration = 0
             stability = "Unstable"
 
+        cv2.putText(image, f'Plank Stability: {stability}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
         cv2.putText(image, f'Plank Stability: {stability}', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2, cv2.LINE_AA)
+
+        cv2.putText(image, f'Time Stable: {stable_duration:.1f}s', (0, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
         cv2.putText(image, f'Time Stable: {stable_duration:.1f}s', (0, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+
+        cv2.putText(image, f'Highscore: {stable_duration_highscore:.1f}s', (0, 400), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
         cv2.putText(image, f'Highscore: {stable_duration_highscore:.1f}s', (0, 400), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+
         if not is_body_straight:
+            cv2.putText(image, 'Align Body', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 6, cv2.LINE_AA)
             cv2.putText(image, 'Align Body', (50, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
+
         if not is_head_aligned:
+            cv2.putText(image, 'Align Head', (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 6, cv2.LINE_AA)
             cv2.putText(image, 'Align Head', (50, 150), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
+
         if not is_elbow_under_shoulder:
+            cv2.putText(image, 'Adjust Elbow Position', (50, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 6, cv2.LINE_AA)
             cv2.putText(image, 'Adjust Elbow Position', (50, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 2, cv2.LINE_AA)
     else:
+        cv2.putText(image, f'Body not fully visible!', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 8, cv2.LINE_AA)
         cv2.putText(image, f'Body not fully visible!', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 250, 0), 2, cv2.LINE_AA)
+
 
 # Webcam starten und Übungserkennung durchführen
 def start_exercise_detection():
@@ -199,6 +222,10 @@ def start_exercise_detection():
         return
 
     cap = cv2.VideoCapture(0)
+    
+    # Erlaubt das Fenster zu resizen
+    cv2.namedWindow(f'{exercise_choice} Detection', cv2.WINDOW_NORMAL)
+
     while cap.isOpened():
         ret, frame = cap.read()
         if not ret:
@@ -223,13 +250,14 @@ def start_exercise_detection():
         else:
             cv2.putText(image, 'No Pose Detected', (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)
 
+        # Resizable Fenster anzeigen
         cv2.imshow(f'{exercise_choice} Detection', image)
+        
         if cv2.waitKey(10) & 0xFF == ord('q'):
             break
 
     cap.release()
     cv2.destroyAllWindows()
-
 
 # Tkinter setup
 root = ctk.CTk()
