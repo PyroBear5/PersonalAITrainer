@@ -1,7 +1,7 @@
 ﻿    
 # Setup
 ```bash
-https://github.com/IchHalt05/PersonalAITrainer
+git clone https://github.com/PyroBear5/PersonalAITrainer
 cd PersonalAITrainer
 python3 -m pip install -r requirements.txt
 python3 surface.py
