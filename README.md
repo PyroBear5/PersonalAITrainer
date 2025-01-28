@@ -6,6 +6,8 @@ cd PersonalAITrainer
 python3 -m pip install -r requirements.txt
 python3 surface.py
 ```
+***Note: Mediapipe geht nur bis zu Python-Version 3.13 [Stand: 28.01.2025]***
+
 
 # Verwendung
 
