@@ -442,37 +442,30 @@ def detect_pushup(landmarks, image):
 
         # Logik für den Push-up-Zähler
 
-        if alignment == "Aligned" and prev_position != position:    
+        if alignment == "Aligned":
 
-            if prev_position == "Up" and position == "Intermediate":
+            if prev_position == "Intermediate" and position == "Down":
 
-                prev_position = position
+                prev_position = position
 
-            elif prev_position == "Intermediate" and position == "Down":
+                down_check = True
 
-                prev_position = position
+            elif prev_position == "Intermediate" and position == "Up" and down_check == True:
 
-                down_check = True
+                pushup_counter += 1  # Zähler erhöhen
 
-            elif prev_position == "Down" and position == "Intermediate":
+                prev_position = position
 
-                prev_position = position
+                down_check = False
 
-            elif prev_position == "Intermediate" and position == "Up" and down_check == True:
+            else:
 
-                pushup_counter += 1  # Zähler erhöhen
+                prev_position = position
 
-                prev_position = position
+        else:
 
-                down_check = False
+            prev_position = None  # Sequenz zurücksetzen, wenn nicht aligned
 
-            else:
-
-                prev_position = position
-
-        else:
-
-            prev_position = None  # Sequenz zurücksetzen, wenn nicht aligned
 
   
 
