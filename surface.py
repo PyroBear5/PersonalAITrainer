@@ -123,14 +123,10 @@ def detect_pushup(landmarks, image):
             position = "Intermediate"
 
         # Logik für den Push-up-Zähler
-        if alignment == "Aligned" and prev_position != position:    
-            if prev_position == "Up" and position == "Intermediate":
-                prev_position = position
-            elif prev_position == "Intermediate" and position == "Down":
+        if alignment == "Aligned":   
+            if prev_position == "Intermediate" and position == "Down":
                 prev_position = position
                 down_check = True
-            elif prev_position == "Down" and position == "Intermediate":
-                prev_position = position
             elif prev_position == "Intermediate" and position == "Up" and down_check == True:
                 pushup_counter += 1  # Zähler erhöhen
                 prev_position = position
